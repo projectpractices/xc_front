@@ -17,6 +17,7 @@
 
 <script>
     import * as loginApi from '../api/login'
+    import jwt from 'jsonwebtoken'
 
     export default {
         data() {
@@ -35,17 +36,31 @@
                     console.log(res)
                     if (res.success) {
                         this.$message.success('登录成功');
-                        window.location.href = "http://localhost:8080/#/";
-                    }else if (res.message){
+                        window.location.href = "http://localhost:8080/#/";
+                    } else if (res.message) {
                         this.$message.error(res.message);
-                    }else {
+                    } else {
                         this.$message.error('登录失败');
                     }
                 });
             },
             resetForm(formName) {
                 alert("重置")
-            }
+            },
+            /*getUserToken() {
+                loginApi.gettoken().then(res => {
+                    let jwt = require('jsonwebtoken');
+                    let str = jwt.decode(res.jwt);
+                    console.log(str.name)
+                    //console.log(res.jwt);
+                    /!*loginApi.parsetoken(res.jwt).then(res => {
+                        console.log(res);
+                    })*!/
+                })
+            }*/
+        },
+        mounted() {
+            /*this.getUserToken();*/
         }
     }
 </script>
