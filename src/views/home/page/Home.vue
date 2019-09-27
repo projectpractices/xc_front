@@ -31,7 +31,7 @@
                         sessionStorage.setItem('objStr', res.jwt)
                         let jwt = require('jsonwebtoken');
                         let str = jwt.decode(res.jwt);
-                        //console.log(str)
+                        console.log(str)
                         this.logined = false;
                         this.logined2 = true;
                         this.user.username = str.name;
